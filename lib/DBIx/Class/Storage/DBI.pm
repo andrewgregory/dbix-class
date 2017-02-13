@@ -2317,7 +2317,7 @@ sub _dbh_execute_for_fetch {
         ? "$v"
         : $v
       ;
-    } map { $_->[0] } @$proto_bind ];
+    } map { ref $_->[1] ? ${$_->[1]}->[1][0] : $_->[0] } @$proto_bind ];
   };
 
   my $tuple_status = [];
